@@ -3,9 +3,9 @@
 
 #include <cstdint>
 
-#define PACKED __attribute__((__packed__))
+#define PACKED __attribute__((packed, aligned(1)))
 
-namespace DS3231 {
+namespace ds3231 {
 
     struct CONTROL {
         std::uint8_t eosc : 1;
@@ -37,13 +37,13 @@ namespace DS3231 {
 
     struct SECOND {
         std::uint8_t : 1;
-        std::uint8_t dec_second : 3;
+        std::uint8_t ten_second : 3;
         std::uint8_t second : 4;
     } PACKED;
 
     struct MINUTE {
         std::uint8_t : 1;
-        std::uint8_t tens_minute : 3;
+        std::uint8_t ten_minute : 3;
         std::uint8_t minute : 4;
     } PACKED;
 
@@ -51,7 +51,7 @@ namespace DS3231 {
         std::uint8_t : 1;
         std::uint8_t sys_12_n24 : 1;
         std::uint8_t nAM_PM : 1;
-        std::uint8_t tens_hour : 4;
+        std::uint8_t ten_hour : 4;
         std::uint8_t hour : 4;
     } PACKED;
 
@@ -62,31 +62,31 @@ namespace DS3231 {
 
     struct DATE {
         std::uint8_t : 2;
-        std::uint8_t tens_date : 2;
+        std::uint8_t ten_date : 2;
         std::uint8_t date : 4;
     } PACKED;
 
     struct MONTH_CENTURY {
         std::uint8_t century : 1;
         std::uint8_t : 2;
-        std::uint8_t tens_month : 1;
+        std::uint8_t ten_month : 1;
         std::uint8_t month : 4;
     } PACKED;
 
     struct YEAR {
-        std::uint8_t tens_year : 4;
+        std::uint8_t ten_year : 4;
         std::uint8_t year : 4;
     } PACKED;
 
     struct ALARM1_SECOND {
         std::uint8_t a1m1 : 1;
-        std::uint8_t tens_second : 3;
+        std::uint8_t ten_second : 3;
         std::uint8_t second : 4;
     } PACKED;
 
     struct ALARM1_MINUTE {
         std::uint8_t a1m1 : 1;
-        std::uint8_t tens_minute : 3;
+        std::uint8_t ten_minute : 3;
         std::uint8_t minute : 4;
     } PACKED;
 
@@ -94,27 +94,27 @@ namespace DS3231 {
         std::uint8_t a1m3 : 1;
         std::uint8_t sys_12_n24 : 1;
         std::uint8_t nAM_PM : 1;
-        std::uint8_t tens_hour : 1;
+        std::uint8_t ten_hour : 1;
         std::uint8_t hour : 4;
     } PACKED;
 
     struct ALARM1_DAY {
         std::uint8_t a1m4 : 1;
         std::uint8_t DY_nDT : 1;
-        std::uint8_t tens_date : 2;
+        std::uint8_t ten_date : 2;
         std::uint8_t day : 4;
     } PACKED;
 
     struct ALARM1_DATE {
         std::uint8_t a1m4 : 1;
         std::uint8_t DY_nDT : 1;
-        std::uint8_t tens_date : 2;
+        std::uint8_t ten_date : 2;
         std::uint8_t date : 4;
     } PACKED;
 
     struct ALARM2_MINUTE {
         std::uint8_t a2m2 : 1;
-        std::uint8_t tens_minute : 3;
+        std::uint8_t ten_minute : 3;
         std::uint8_t minute : 4;
     } PACKED;
 
@@ -122,25 +122,25 @@ namespace DS3231 {
         std::uint8_t a2m3 : 1;
         std::uint8_t sys_12_n24 : 1;
         std::uint8_t nAM_PM : 1;
-        std::uint8_t tens_hour : 1;
+        std::uint8_t ten_hour : 1;
         std::uint8_t hour : 4;
     } PACKED;
 
     struct ALARM2_DAY {
         std::uint8_t a2m4 : 1;
         std::uint8_t DY_nDT : 1;
-        std::uint8_t tens_date : 2;
+        std::uint8_t ten_date : 2;
         std::uint8_t date : 4;
     } PACKED;
 
     struct ALARM2_DATE {
         std::uint8_t a2m4 : 1;
         std::uint8_t DY_nDT : 1;
-        std::uint8_t tens_date : 2;
+        std::uint8_t ten_date : 2;
         std::uint8_t date : 4;
     } PACKED;
 
-}; // namespace DS3231
+}; // namespace ds3231
 
 #undef PACKED
 

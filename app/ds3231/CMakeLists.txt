@@ -4,12 +4,10 @@ target_sources(ds3231 PRIVATE
     "ds3231.cpp"
 )
 
-target_include_directories(ds3231 PUBLIC 
-    ${CMAKE_SOURCE_DIR}/app/stm32_utility
+target_include_directories(ds3231 PUBLIC
 )
 
 target_link_libraries(ds3231 PUBLIC
-    stm32_utility
 )
 
 target_compile_options(ds3231 PUBLIC

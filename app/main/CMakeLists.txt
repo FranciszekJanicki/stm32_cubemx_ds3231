@@ -5,14 +5,13 @@ target_sources(main PRIVATE
 )
 
 target_include_directories(main PRIVATE 
-    ${CMAKE_SOURCE_DIR}/app/ds3231
-    ${CMAKE_SOURCE_DIR}/app/stm32_utility
+    ${APP_DIR}/ds3231
+    ${CMAKE_DIR}/stm32cubemx
 )
 
 target_link_libraries(main PRIVATE
     stm32cubemx
     ds3231
-    stm32_utility
 )
 
 target_compile_options(main PUBLIC

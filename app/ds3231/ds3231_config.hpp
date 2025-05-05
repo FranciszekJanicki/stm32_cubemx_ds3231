@@ -2,14 +2,11 @@
 #define DS3231_CONFIG_HPP
 
 #include "ds3231_registers.hpp"
-#include "i2c_device.hpp"
 #include <cstdint>
 
-namespace DS3231 {
+namespace ds3231 {
 
-    using I2CDevice = STM32_Utility::I2CDevice;
-
-    enum struct RA : std::uint8_t {
+    enum struct RegAddr : std::uint8_t {
         SECOND = 0x00,
         MINUTE = 0x01,
         HOUR = 0x02,
@@ -58,11 +55,25 @@ namespace DS3231 {
     };
 
     struct Config {
-        CONTROL control = {};
-        STATUS status = {};
-        AGING_OFFSET aging_offset = {};
+        CONTROL control;
+        STATUS status;
+        AGING_OFFSET aging_offset;
     };
 
-}; // namespace DS3231
+    struct Interface {
+        void* user;
+        void (*init)(void* const);
+        void (*deinit)(void* const);
+        void (*write)(void* const,
+                      std::uint8_t const,
+                      std::uint8_t const* const,
+                      std::size_t const);
+        void (*read)(void* const, std::uint8_t const, std::uint8_t* const, std::size_t const);
+        void (*delay)(void* const, std::uint32_t const);
+    };
+
+    constexpr auto SLAVE_ADDRESS = 0b1101000;
+
+}; // namespace ds3231
 
 #endif // DS3231_CONFIG_HPP
