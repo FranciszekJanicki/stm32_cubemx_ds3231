@@ -1,20 +1,18 @@
-add_executable(main)
+add_executable(app)
 
-target_sources(main PRIVATE 
+target_sources(app PRIVATE 
     "main.cpp"
 )
 
-target_include_directories(main PRIVATE 
-    ${APP_DIR}/ds3231
+target_include_directories(app PRIVATE 
     ${CMAKE_DIR}/stm32cubemx
 )
 
-target_link_libraries(main PRIVATE
+target_link_libraries(app PRIVATE
     stm32cubemx
-    ds3231
 )
 
-target_compile_options(main PUBLIC
+target_compile_options(app PUBLIC
     -std=c++23
     -Wall
     -Wextra
