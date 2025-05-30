@@ -1,7 +1,7 @@
 add_library(ds3231 STATIC)
 
 target_sources(ds3231 PRIVATE 
-    "ds3231.cpp"
+    "ds3231.c"
 )
 
 target_include_directories(ds3231 PUBLIC
@@ -11,7 +11,7 @@ target_link_libraries(ds3231 PUBLIC
 )
 
 target_compile_options(ds3231 PUBLIC
-    -std=c++23
+    -std=c23
     -Wall
     -Wextra
     -Wconversion
@@ -29,5 +29,4 @@ target_compile_options(ds3231 PUBLIC
     -Wdouble-promotion
     -Wimplicit-fallthrough
     -Wcast-align
-    -fconcepts
 )
