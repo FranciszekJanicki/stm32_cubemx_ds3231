@@ -7,7 +7,7 @@ BUILD_DIR := $(PROJECT_DIR)/build
 UTILITY_DIR := $(APP_DIR)/utility
 MAIN_DIR := $(APP_DIR)/main
 
-PROJECT_NAME := ds3231
+PROJECT_NAME := project
 PROJECT_BINARY := $(BUILD_DIR)/app/main/main.elf
 
 UART_PORT := /dev/ttyUSB0
